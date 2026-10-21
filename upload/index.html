@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>PDF 分享 · 上传</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../assets/upload.css">
+</head>
+<body>
+  <main>
+    <h1>PDF 分享</h1>
+
+    <section id="token-card" class="card" hidden>
+      <h2>第一次使用：填写 GitHub 令牌</h2>
+      <ol>
+        <li><a id="token-link" target="_blank" rel="noopener">点这里创建令牌</a>（名称和权限已自动填好）</li>
+        <li><b>Repository access</b> 选 <b>Only select repositories</b>，再选中 <b id="repo-name"></b></li>
+        <li>点页面底部的 <b>Generate token</b>，复制生成的令牌，粘贴到下面</li>
+      </ol>
+      <form id="token-form">
+        <input id="token-input" type="password" autocomplete="off" spellcheck="false" placeholder="github_pat_..." required>
+        <button type="submit" id="token-save">保存</button>
+      </form>
+      <p class="hint">令牌只保存在这个浏览器里，只会发给 GitHub。</p>
+      <p id="token-error" class="error" hidden></p>
+    </section>
+
+    <section id="upload-card" class="card" hidden>
+      <label id="drop" class="drop">
+        <input id="file-input" type="file" accept="application/pdf,.pdf" multiple>
+        <span class="drop-title">选择 PDF 文件</span>
+        <span class="hint">或把文件拖到这里，可多选；单个文件不超过 100 MB</span>
+      </label>
+      <div id="progress" hidden>
+        <div class="bar"><div id="bar-fill"></div></div>
+        <p id="progress-text" class="hint"></p>
+      </div>
+      <p id="upload-error" class="error" hidden></p>
+      <ul id="results" class="results"></ul>
+    </section>
+
+    <section id="list-card" class="card" hidden>
+      <h2>已上传的文件 <span id="count" class="hint"></span></h2>
+      <p id="list-empty" class="hint" hidden>还没有上传过文件。</p>
+      <p id="list-error" class="error" hidden></p>
+      <ul id="file-list" class="files"></ul>
+    </section>
+
+    <footer id="footer" hidden>
+      <button type="button" id="logout" class="link">更换令牌</button>
+    </footer>
+  </main>
+  <script type="module" src="../assets/upload.js"></script>
+</body>
+</html>
