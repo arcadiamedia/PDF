@@ -116,6 +116,7 @@ async function main() {
       zoomRanges: ZOOM_RANGES,
     },
     export: { defaultFileName: name || `${id}.pdf` },
+    stamp: { manifests: [] }, // 不加载在线图章库（批注已隐藏，用不到）
     disabledCategories: DISABLED,
   });
 }
